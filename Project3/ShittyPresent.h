@@ -2,13 +2,12 @@
 #ifndef _SHITTYPRESENT_H_
 #define _SHITTYPRESENT_H_
 
-
-
 #include <iostream>
 #include <fstream>
 #include <vector>
 
-typedef std::vector<std::vector<unsigned int>> FrameBuffer;
+template<typename T>
+using FrameBuffer = std::vector<std::vector<T>>;
 
 template<class T>
 class ShittyPresent
@@ -18,7 +17,7 @@ public:
     ShittyPresent(unsigned int h, unsigned int w);
     ~ShittyPresent() {}
 
-    void Present(const FrameBuffer& p) const;
+    void Present(const FrameBuffer<T>& p) const;
 private:
     unsigned int height;
     unsigned int width;

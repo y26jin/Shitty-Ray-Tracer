@@ -14,7 +14,7 @@ ShittyPresent<T>::ShittyPresent(unsigned int h, unsigned int w)
 }
 
 template<class T>
-void ShittyPresent<T>::Present(const FrameBuffer& p) const
+void ShittyPresent<T>::Present(const FrameBuffer<T>& p) const
 {
     // set up PPM image format
     std::ofstream fs("image.ppm");
@@ -27,7 +27,6 @@ void ShittyPresent<T>::Present(const FrameBuffer& p) const
         {
             // output every pixel
             fs << p[i*j][0] << " " << p[i*j][1] << " " << p[i*j][2] << "\n";
-            std::cout << p[i*j][0] << " " << p[i*j][1] << " " << p[i*j][2] << "\n";
         }
     }
     fs.close();

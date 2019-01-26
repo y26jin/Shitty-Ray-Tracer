@@ -4,28 +4,28 @@
 int main()
 {
     // initial setup
-    unsigned int nx = 200, ny = 200;
-    ShittyPresent<unsigned int> p(nx, ny);
-    FrameBuffer fb(nx*ny, std::vector<unsigned int>(3,0));
+    int nx = 200, ny = 100;
+    ShittyPresent<int> p(nx, ny);
+    FrameBuffer<int> fb;
     
     // draw every pixel onto fb
-    unsigned count = 0;
-    for (unsigned int i=ny-1;i>0;--i)
+    for (int i=ny-1;i>=0;i--)
     {
-        for (unsigned int j=0;j<nx;++j)
+        for (int j=0;j<nx;j++)
         {
-            double r = double(j) / double(nx);
-            double g = double(i) / double(ny);
-            double b = static_cast<double>(0.2);
+            float r = float(j) / float(nx);
+            float g = float(i) / float(ny);
+            float b = 0.2;
 
-            unsigned int ir = unsigned int(255.99*r);
-            unsigned int ig = unsigned int(255.99*g);
-            unsigned int ib = unsigned int(255.99*b);
+            int ir = int(255.99*r);
+            int ig = int(255.99*g);
+            int ib = int(255.99*b);
 
-            fb[count][0] = ir;
-            fb[count][1] = ig;
-            fb[count][2] = ib;
-            count++;
+            std::vector<int> temp(3, 0);
+            temp[0] = ir;
+            temp[1] = ig;
+            temp[2] = ib;
+            fb.push_back(temp);
         }
     }
 
