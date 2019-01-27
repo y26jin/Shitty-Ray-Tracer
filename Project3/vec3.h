@@ -45,7 +45,7 @@ public:
     inline vec3 cross(const vec3 &v1, const vec3 &v2);
     inline void make_unit_vector();
 
-    T e[3];
+    T e[3] = { 0 };
 };
 
 #include "vec3.cpp"
