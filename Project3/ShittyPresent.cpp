@@ -1,10 +1,12 @@
-#include "ShittyPresent.h"
-#include <fstream>
-#include <iostream>
+
 #pragma once
 
 #ifndef _SHITTYPRESENT_CPP_
 #define _SHITTYPRESENT_CPP_
+
+#include "ShittyPresent.h"
+#include <fstream>
+#include <iostream>
 
 template<class T>
 ShittyPresent<T>::ShittyPresent(unsigned int h, unsigned int w)

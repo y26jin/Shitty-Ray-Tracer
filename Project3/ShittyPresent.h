@@ -6,7 +6,7 @@
 #include <fstream>
 #include <vector>
 
-template<typename T>
+template<class T>
 using FrameBuffer = std::vector<std::vector<T>>;
 
 template<class T>
