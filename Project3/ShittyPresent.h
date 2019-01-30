@@ -14,13 +14,13 @@ class ShittyPresent
 {
 public:
     ShittyPresent() {}
-    ShittyPresent(unsigned int h, unsigned int w);
+    ShittyPresent(int h, int w);
     ~ShittyPresent() {}
 
     void Present(const FrameBuffer<T>& p) const;
 private:
-    unsigned int height;
-    unsigned int width;
+    int x;
+    int y;
 };
 
 #include "ShittyPresent.cpp"

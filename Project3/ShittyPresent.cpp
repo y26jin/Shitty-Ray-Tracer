@@ -9,10 +9,10 @@
 #include <iostream>
 
 template<class T>
-ShittyPresent<T>::ShittyPresent(unsigned int h, unsigned int w)
+ShittyPresent<T>::ShittyPresent(int h, int w)
 {
-    height = h;
-    width = w;
+    x = h;
+    y = w;
 }
 
 template<class T>
@@ -20,16 +20,12 @@ void ShittyPresent<T>::Present(const FrameBuffer<T>& p) const
 {
     // set up PPM image format
     std::ofstream fs("image.ppm");
-    fs << "P3\n" << height << " " << width << "\n255\n";
+    fs << "P3\n" << x << " " << y << "\n255\n";
     
     // write from frame buffer to target file
-    for (unsigned int i = 0; i < height; ++i)
+    for (auto c : p)
     {
-        for (unsigned int j = 0; j < width; ++j)
-        {
-            // output every pixel
-            fs << p[i*j][0] << " " << p[i*j][1] << " " << p[i*j][2] << "\n";
-        }
+        fs << c[0] << " " << c[1] << " " << c[2] << "\n";
     }
     fs.close();
 }
