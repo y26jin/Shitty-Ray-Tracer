@@ -1,9 +1,17 @@
 #include <iostream>
 #include "ray.h"
 #include "ShittyPresent.h"
+#include "stdafx.h"
+
+#define DX12ASYNCCOMPUTE 0
+#define CPUMODE 1
+#define RAYMODE CPUMODE
 
 int main()
 {
+#if RAYMODE == DX12ASYNCCOMPUTE
+
+#elif RAYMODE == CPUMODE
     // initial setup
     int nx{ 200 };
     int ny{ 100 };
@@ -36,9 +44,8 @@ int main()
             fb.push_back(temp);
         }
     }
-
-    // present
+    // Shitty present
     p.Present(fb);
-
+#endif
     return 0;
 }
