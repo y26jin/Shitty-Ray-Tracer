@@ -10,6 +10,7 @@
 int main()
 {
 #if RAYMODE == DX12ASYNCCOMPUTE
+    // Note: use compute queue only
 
 #elif RAYMODE == CPUMODE
     // initial setup
