@@ -6,35 +6,39 @@
 #include <fstream>
 #include <vector>
 
-template<class T>
-using FrameBuffer = std::vector<std::vector<T>>;
+namespace CpuMode {
 
-template<class T>
-class ShittyPresent
-{
-public:
-    ShittyPresent() {}
-    ShittyPresent(int h, int w) {
-        x = h;
-        y = w;
-    }
-    ~ShittyPresent() {}
+    template<class T>
+    using FrameBuffer = std::vector<std::vector<T>>;
 
-    void Present(const FrameBuffer<T>& p) const {
-        // set up PPM image format
-        std::ofstream fs("image.ppm");
-        fs << "P3\n" << x << " " << y << "\n255\n";
-
-        // write from frame buffer to target file
-        for (auto c : p)
-        {
-            fs << c[0] << " " << c[1] << " " << c[2] << "\n";
+    template<class T>
+    class ShittyPresent
+    {
+    public:
+        ShittyPresent() {}
+        ShittyPresent(int h, int w) {
+            x = h;
+            y = w;
         }
-        fs.close();
-    }
-private:
-    int x;
-    int y;
-};
+        ~ShittyPresent() {}
+
+        void Present(const FrameBuffer<T>& p) const {
+            // set up PPM image format
+            std::ofstream fs("image.ppm");
+            fs << "P3\n" << x << " " << y << "\n255\n";
+
+            // write from frame buffer to target file
+            for (auto c : p)
+            {
+                fs << c[0] << " " << c[1] << " " << c[2] << "\n";
+            }
+            fs.close();
+        }
+    private:
+        int x;
+        int y;
+    };
+
+}
 
 #endif // ! _SHITTYPRESENT_H_
